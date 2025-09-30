@@ -1,9 +1,17 @@
 unique_ids:
   assets:
+    HeavyCoat_.png: '175922856371984321000502.96986'
+    Jacket_.png: '1759228534423693146513350.9125'
+    LightJacket_.png: '1759228482885117435103438.20018'
+    Raincoat.png: '1759228784868498887234697.4853'
+    Singlet.png: '1759228675045346805466936.1924'
+    Sweater_.png: '175922863302928038479564.580498'
+    longsleeve_.png: '1759228287866681025166565.3043'
     standard-page.html: ZRFS3FL5GNZGPHD43N6DUB4BOQRGI36E
     theme.css: LG6T2SXJ3B5BFKYA6XKDSYHOYQLZOZOI
   forms:
     Form1: 6FUBB66I36ASXZNPXUJNU5A3BQLTGGD7
   modules: {}
   scripts: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1759225570811795209695991.2521'
