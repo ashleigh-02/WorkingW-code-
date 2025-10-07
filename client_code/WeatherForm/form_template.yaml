@@ -6,15 +6,21 @@ components:
   type: Button
 - layout_properties: {grid_position: 'MKCKRV,NIAKLY'}
   name: label_1
-  properties: {align: center, text: 'Location '}
+  properties: {align: center, text: ''}
   type: Label
-- layout_properties: {grid_position: 'BNMQJY,HJCMWN'}
+- layout_properties: {grid_position: 'WGGXMP,HFGKQR'}
+  name: label_emoji
+  properties: {align: center, background: '#ffebfb', bold: true, font_size: 24, spacing_above: large}
+  type: Label
+- layout_properties: {grid_position: 'AVLVIN,IEUHBS'}
   name: label_suggestion
-  properties: {align: center, background: 'theme:Gray 100', role: headline}
+  properties: {align: center, background: 'theme:Gray 100', bold: false, font_size: 12, role: headline, spacing_above: large}
   type: Label
-- layout_properties: {grid_position: 'KQWLAF,JCMWJF'}
+- layout_properties: {grid_position: 'MRQTYR,ETEEWB'}
   name: label_weather_info
   properties: {align: center, bold: true, text: ''}
   type: Label
-container: {type: ColumnPanel}
+container:
+  properties: {background: '#ebfcff'}
+  type: ColumnPanel
 is_package: true
