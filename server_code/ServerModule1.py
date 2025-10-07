@@ -1,39 +1,43 @@
 import anvil.server
-
-#import anvil.server
 import requests
 
 API_KEY = "6b906bc379c14c275ee6514efd09338e"
 
 def suggest_clothing(temp, condition):
+  """Return clothing suggestion and emoji string"""
   if temp < 0:
     suggestion = "Heavy coat, gloves, scarf"
-    self.label_icon.text = "HeavyCoat_.png, 🧤, 🧣"
+    emoji = "🧥🧤🧣"
   elif 0 <= temp <= 10:
     suggestion = "Jacket, sweater, long pants"
-    self.label_icon.text = "Jacket_.png, Sweater_.png, 👖"
+    emoji = "🧥🧶👖"
   elif 11 <= temp <= 15:
     suggestion = "Light jacket, long sleeve, long pants"
-    self.label_icon.text = "LightJacket_.png, longsleeve_.png, 👖"
+    emoji = "🧥👕👖"
   elif 16 <= temp <= 20:
     suggestion = "Light jacket, short sleeve, long pants"
-    self.label_icon.text = "LightJacket_.png,👚,👖"
+    emoji = "🧥👚👖"
   elif 21 <= temp <= 25:
     suggestion = "T-shirt, shorts, sunglasses"
-    self.label_icon.text = "👚 🩳 🕶️"
+    emoji = "👕🩳🕶️"
   elif 26 <= temp <= 32:
-    suggestion = "singlet, shorts, hat, sunglasses"
-    self.label_icon.text = "Singlet.png, 🩳, 🕶️, 👒"
+    suggestion = "Singlet, shorts, hat, sunglasses"
+    emoji = "🩳👒🕶️"
   else:
     suggestion = "Light clothing, hat, sunglasses"
+    emoji = "👒🕶️"
 
+  # Weather-specific adjustments
   if condition.lower() in ['rain', 'snow']:
     suggestion += " + waterproof jacket or umbrella"
-    self.label_icon.text = "Raincoat.png, 🌂"
-  return suggestion
+    emoji = "🌂🧥"
+
+  return suggestion, emoji
+
 
 @anvil.server.callable
 def get_weather(location):
+  """Fetch weather data and return temperature, condition, and clothing info"""
   url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&appid={API_KEY}"
   result = requests.get(url)
 
@@ -41,7 +45,18 @@ def get_weather(location):
     data = result.json()
     temp = data['main']['temp']
     condition = data['weather'][0]['main']
-    suggestion = suggest_clothing(temp, condition)
-    return {"success": True, "temp": temp, "condition": condition, "suggestion": suggestion}
+    suggestion, emoji = suggest_clothing(temp, condition)
+
+    return {
+      "success": True,
+      "temp": temp,
+      "condition": condition,
+      "suggestion": suggestion,
+      "emoji": emoji
+    }
+
   else:
-    return {"success": False, "message": result.json().get("message", "Unknown error")}
+    return {
+      "success": False,
+      "message": result.json().get("message", "Unknown error")
+    }

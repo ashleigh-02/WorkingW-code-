@@ -1,0 +1,19 @@
+components:
+- layout_properties: {grid_position: 'MKCKRV,FLZYXH'}
+  name: button_back
+  properties: {align: left, text: 'Back '}
+  type: Button
+- layout_properties: {grid_position: 'MKCKRV,NIAKLY'}
+  name: label_1
+  properties: {align: center, text: 'Location '}
+  type: Label
+- layout_properties: {grid_position: 'BNMQJY,HJCMWN'}
+  name: label_suggestion
+  properties: {align: center, background: 'theme:Gray 100', role: headline}
+  type: Label
+- layout_properties: {grid_position: 'KQWLAF,JCMWJF'}
+  name: label_weather_info
+  properties: {align: center, bold: true, text: ''}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true
