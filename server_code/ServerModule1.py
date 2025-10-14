@@ -3,6 +3,7 @@ import requests
 
 API_KEY = "6b906bc379c14c275ee6514efd09338e"
 
+#clothing suggestion key 
 def suggest_clothing(temp, condition):
   """Return clothing suggestion and emoji string"""
   if temp < 0:
